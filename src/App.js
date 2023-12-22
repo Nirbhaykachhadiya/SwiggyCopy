@@ -1,10 +1,14 @@
-import './App.css';
-import {createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom'
-import HomeBody from './HomeBody';
-import Header from './Header';
-import About from './About';
-import ErrorPage from './ErrorPage';
-import Menucard from './Menucard';
+//import './App.css';
+import './index.css';
+import {createBrowserRouter,Outlet} from 'react-router-dom'
+import HomeBody from './Components/HomeBody';
+import Header from './Components/Header';
+import About from './Components/About';
+import ErrorPage from './Components/ErrorPage';
+import Menucard from './Components/Menucard';
+import { lazy,Suspense } from 'react';
+
+const Instamart=lazy(()=>import("./Components/Instamart"))
 
 
 const  App=()=> {
@@ -36,6 +40,10 @@ const appRouter=createBrowserRouter([{
     {
       path:"/restaurant/:resid",
      element:<Menucard />
+    },
+    {
+      path:"/Instamart",
+     element:<Suspense fallback={<h1>Loading</h1>}><Instamart /></Suspense>
     }
   ],
     errorElement:<ErrorPage/>

@@ -1,10 +1,11 @@
 import React from 'react'
-import {useEffect,useState} from 'react'
-import Restaurant from './Restaurant';
+import{useState,useEffect} from 'react'
 
-const HomeBody = () => {
-
+const useHomeRestaurant = () => {
+  
     const [restaurant,setRestaurant]=useState([])
+
+    
 
 
     const fetchData=async()=>{
@@ -22,14 +23,10 @@ const HomeBody = () => {
     }
   
     useEffect(()=>{fetchData()},[])
+
+    return restaurant
   
-
-
-
-  return (<>
-   {restaurant.length!=0?<div className='main-Rest'><Restaurant restaurant={restaurant}/></div>:"Loading"}
-</>
-  )
+  
 }
 
-export default HomeBody
+export default useHomeRestaurant
